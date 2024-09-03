@@ -6,9 +6,7 @@
 * Paths
 ********************************************************************************************************************
 global rawdata "${onedrive}/Research/Data/ISSDA 0021-00_Healthy Ireland_1-8/0021-08 Healthy Ireland 2023 DIP/0021-08 Healthy Ireland 2023_Data/STATA/0021-08_healthy_ireland_2023.DTA"
-
-
-
+global outputs "/Users/barraroantree/Code/ecu33091/Lectures/Chapter1/"
 
 
 * Load data, clean and plot relationship between self-reported health and insurance
@@ -38,6 +36,6 @@ graph bar (percent), over(has_health_insurance) over(self_reported_health) asyva
 
 
 * save graph
-graph export "${graphs}/health_and_insurance.png", replace
+graph export "${outputs}/health_and_insurance.png", replace
 
 // ends 
