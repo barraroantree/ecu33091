@@ -1,4 +1,6 @@
-This repository contains the lecture slides from my undergrad econometrics course (Econ 1630, Mathematical Econometrics I), taught at Brown University. The class was developed in collaboration with Peter Hull. The materials are licensed under an MIT license: feel free to use for your teaching with attribution. 
+This repository contains the lecture slides for ECU33091 Econometrics A at Trinity College Dublin.
+
+These are based on those for Econ 1630 (Mathematical Econometrics I) taught at Brown University by Jonathan Roth, developed in collaboration with Peter Hull. The materials are licensed under an MIT license: feel free to use for your teaching with attribution. 
 
 Links to the PDF handouts and raw latex files are below. You can find the latex source files in the Github repo.
 
