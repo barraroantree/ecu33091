@@ -136,21 +136,54 @@
 
 %\usefonttheme[onlymath]{serif}
 
+% Apply Trinity Color scheme
+% % use Trinity font
+% \usepackage[default]{sourcesanspro}
+% \usepackage[T1]{fontenc}
+ 
+% make look like Trinity scheme by changing colour and adding footline
+\definecolor{TrinityBlue}{RGB}{5,105,185}
+\definecolor{CoolGrey}{RGB}{80,85,90}
+ 
+\setbeamercolor*{title}{fg=TrinityBlue}
+\setbeamercolor*{frametitle}{fg=TrinityBlue}
+\setbeamercolor*{structure}{fg=TrinityBlue}
+ 
+\hypersetup{colorlinks=true,citecolor=CoolGrey,linkcolor=CoolGrey}
+ 
+\setbeamercolor{footlinecolor}{fg=white,bg=TrinityBlue}
+\setbeamertemplate{footline}{
+   \begin{beamercolorbox}[ht=4ex,leftskip=1.4cm,rightskip=.3cm]{footlinecolor}
+    \usebeamercolor{footlinecolor}
+    \vspace{0.1cm}
+    \textbf{Trinity College Dublin}, the University of Dublin \hfill \insertframenumber
+   \end{beamercolorbox}
+}
+ 
+% Trinity logo on front page
+% \titlegraphic{
+%     \includegraphics[width=0.60\textwidth]{TCDlogo.jpg}
+% }
+\subtitle{
+    \includegraphics[width=0.50\textwidth]{TCDlogo.jpg}
+}
+ 
+
 \usepackage{appendixnumberbeamer}
 \renewcommand{\thefootnote}{}
 
-\setbeamertemplate{footline}
-        {
-      \leavevmode%
-   %   \hbox{%
-%      \begin{beamercolorbox}[wd=\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
-        %\usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{2em}%
-\hfill
-    %turning the next line into a comment, erases the frame numbers
-        \insertframenumber{}\hspace*{2ex}\vspace{1ex}
+% \setbeamertemplate{footline}
+%         {
+%       \leavevmode%
+%    %   \hbox{%
+% %      \begin{beamercolorbox}[wd=\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+%         %\usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{2em}%
+% \hfill
+%     %turning the next line into a comment, erases the frame numbers
+%         \insertframenumber{}\hspace*{2ex}\vspace{1ex}
 
-  %    \end{beamercolorbox}}%
-}
+%   %    \end{beamercolorbox}}%
+% }
 
 \definecolor{blue}{RGB}{0, 0, 210}
 \definecolor{red}{RGB}{170, 0, 0}
@@ -179,6 +212,7 @@
   \def\beamer@finalnospec{}%
 }
 \makeatother
+
 
 \begin{document}
 
