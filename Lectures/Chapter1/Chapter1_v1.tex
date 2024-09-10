@@ -1,5 +1,5 @@
 
-\documentclass[11pt,english,handout]{beamer}
+\documentclass[11pt,english]{beamer}
 
 
 
@@ -210,33 +210,29 @@
 }
 \makeatother
 
+\AtBeginSection[]
+{
+  \begin{frame}<beamer>
+    \frametitle{Outline}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
 
 \begin{document}
 
 %% Title slide
+%------------------------------------------------------------------------------------------
 \begin{frame}[noframenumbering]{}
 \vspace{0.5cm}
-\title[]{Chapter 1: Introduction to ECU33091}
+\title[]{Lecture 1: Introduction}
 \author{Barra Roantre}
-\date{Econometrics A \\ Trinity College Dublin \\ Michaelmas Term 2024} 
+\date{ECU33091 Econometrics A \\ Trinity College Dublin \\ Michaelmas Term 2024} 
 \titlepage {\small{}\ }\thispagestyle{empty} \vspace{-30pt}
 
 \end{frame}
  
-\begin{frame}{Outline}
 
-	1. Course Preliminaries
-	\vspace{0.8cm}
-
-	2. What is Econometrics?
-	\vspace{0.8cm}
-
-	3. Why is Econometrics Challenging?
-	\vspace{0.8cm}
-
-	4. Course Roadmap
-
-\end{frame}
 
 
 \section{Course Preliminaries}
@@ -253,10 +249,11 @@
 			\caption*{\textbf{Lecturer: Prof. Barra Roantree} \\ (Office hours: Wed 12-1pm by appointment)}			
 		\end{minipage}
 		\hfill
+		\pause 
 		\begin{minipage}{0.45\textwidth}
 			\centering
 			\includegraphics[width=\textwidth, trim=0 250 0 0, clip]{headshot_mcrae.png} % Adjust the trim values as needed
-			\caption*{\textbf{TA: Michael McRae} \\ (Office hours: next week Tuesday 9am, after Wednesday)}
+			\caption*{\textbf{TA: Michael McRae} \\ (Office hours: tbc)}
 		\end{minipage}
 	\end{figure}
 
@@ -266,6 +263,7 @@
 	\framesubtitle{What will you learn in this course?}
 	\vspace{0.5cm}
 	By the end of the course, should be able to critically assess empirical claims of the sort that are pervasive in life today e.g:
+	\pause 
 	\begin{figure}
 		\centering
 		\includegraphics[width=0.6\textwidth, trim=0 0 0 0, clip]{tree-lined-streets.png} % Adjust the trim values as needed
@@ -276,10 +274,10 @@
 \begin{frame}{Course Preliminaries}
 	\framesubtitle{What will you learn in this course?}
 	\begin{itemize}
-		\item Learn methods for estimating \textit{causal effects} using \textit{observational data}
+		\item Methods for estimating \textit{causal effects} using \textit{observational data}
 		\item Focus on applications: theory is used only as needed to understand the whys of the methods;
 		\item Learn to evaluate the analysis of others: this means you will be able to read/understand empirical economics papers in other econ courses
-		\item Get some hands-on experience with regression analysis in your problem sets.
+		\item Get some hands-on experience with an applied project  
 		
 	\end{itemize}
 
@@ -295,16 +293,18 @@
 	\item Friday 12pm-1pm, Regents House (above front arch)
 \end{itemize}
 \vspace{0.5cm}
+\pause 
 
 \textbf{Computer labs:}
 \begin{itemize}
-	\item Weekly labs \textbf{starting week 3} (online intro next week) 
+	\item Weekly labs \underline{starting week 3} (online intro next week) 
 	\item You will learn how to analyse data using software called Stata
 	\item Crucial for coursework (worth 30\% of overall grade)
-	\item You will be assigned to a group and a time slot by the Department. Contact econsec@tcd.ie (\underline{not me or Mike}) if this needs to be changed (but must be good reason)
+	\item You will be assigned to a group and a time slot by the Department. 
+	\item Contact econsec@tcd.ie (\underline{not me or Mike}) if this needs to be changed because of timetable clash (provide details on these)
 \end{itemize}
 \vspace{0.5cm}
-
+\pause 
 
 Attendance not mandatory \underline{but highly encouraged if you want to pass} 
 
@@ -317,8 +317,10 @@ Attendance not mandatory \underline{but highly encouraged if you want to pass}
 \begin{itemize}
 	\item Computer homework (worth 5\%) available next week \& due midday Monday September 23rd
 	\item Assignment (worth 25\%) available reading week \& due midday Monday November 18th
+	\item Extensions only at the request of your tutor 
 \end{itemize}
 \vspace{1cm}
+\pause 
 
 \textbf{1.5 hours final exam (worth 70\%):}
 	\begin{itemize}
@@ -351,20 +353,6 @@ Attendance not mandatory \underline{but highly encouraged if you want to pass}
 
 \end{frame}
 
-\begin{frame}{Outline}
-
-	1. Course Preliminaries $\checkmark$
-	\vspace{0.8cm}
-
-	2. What is Econometrics?
-	\vspace{0.8cm}
-
-	3. Parameters, Estimands, and Estimators
-	\vspace{0.8cm}
-
-	4. Course Roadmap
-
-\end{frame}
 
 
 \section{What is Econometrics}
@@ -379,7 +367,7 @@ What types of questions might we be interested in:
 \medskip
 
 \begin{itemize}
-\item<1-> Has economic inequality increased since 1960?
+\item<1-> Has economic inequality increased since the 1980s?
 	\begin{itemize}
 		\item<3-> \textbf{Descriptive Q:} asks about how things are (or were) in reality
 	\end{itemize}
@@ -397,20 +385,19 @@ What types of questions might we be interested in:
 
 \pause 
 \only<6->{
-In this course, we will focus mainly on descriptive and causal questions, with an emphasis on causal questions
+In this module, we will mainly focus on descriptive and causal questions (with a strong emphasis on the latter)
 }
 
 \end{frame}
 
 
-\begin{frame}{Why is answering these questions hard?}
+\begin{frame}{Answering these types of questions is hard}
 \framesubtitle{Descriptive questions}
-
-
+\pause 
 We only observe data for a \textbf{sample}, not the full \textbf{population}
 	\begin{itemize}
 		\item 
-		Example: we want to know how the distribution of income in the US has changed. But we only observe income for a survey of workers
+		Example: we want to know how the distribution of earnings in Ireland has changed. But we only observe income for a survey of workers
 	\end{itemize}
 \vspace{0.25cm}
 
@@ -462,305 +449,146 @@ We only observe data for a \textbf{sample}, not the full \textbf{population}
 \end{frame}
 
 
-\begin{frame}{Why is answering these questions hard? (Part II)}
+\begin{frame}{Answering these types of questions is hard}
 \framesubtitle{Causal questions}
 	Answering causal questions often \textit{even harder} than descriptive Qs: why?	
 	\pause
 	\begin{itemize}
-	\item Causal Qs involve both a descriptive component (what are outcomes in reality?) 
-	\pause 
-	\item ... and a \textit{counterfactual} component (how would things have been under a different treatment?)
-	
-	\pause
-	\item e. g: what is the causal effect on your earnings of going to Trinity rather than UCD? 
-		\begin{itemize}
-			\item
-			Descriptive Q: how much do Trinity students earn after graduation?
-			% include figure showing trinity student earnings here if can 
-			
-			\item Counterfactual Q: how much would Trinity students have earned if they went to UCD?  
-		\end{itemize}
-		
-	\pause 	
-	\item Counterfactual Qs can't ever be answered with data alone. Need additional assumptions to learn about them!	
-\end{itemize}	
-\end{frame}
-
-
-
-\begin{frame}{Splitting up the problem}
-	\begin{wideitemize}
-		
-		\item
-		When thinking about causal Qs, it's often easier to split the problem in two
-		
-		\item
-		\textbf{Identification:} what could we learn about the parameters we care about (causal effects) if we had the \text{observable data} for the entire population
-		\begin{itemize}
-			\item 
-			Need to make assumptions about how observed outcomes relate to outcomes that would have been realized under different treatments
-		\end{itemize}
-		
-		\item
-		\textbf{Statistics}: what can we learn about the full population that we care about from the finite sample that we have?
-			\begin{itemize}
-				\item 
-				Need to understand the process by which our data is generated from the full population
-			\end{itemize} 	
-		
-	\end{wideitemize}	
-	
-\end{frame}
-
-
-
-\begin{frame}{Framework for thinking about these steps}
-	
-\begin{wideitemize}
-
-\item \textbf{Sample:} the data that you actually observe
-	\begin{itemize}
-		\item
-		A survey of students from Brown and URI graduates about their earnings 
-	\end{itemize}
-
-\pause
-\item \textbf{Estimator:} a function of the data in the sample 
-	\begin{itemize}
-		\item Difference in earnings between Brown and URI students in survey
-	\end{itemize}
-
-\pause
-\item \textbf{Estimand:} a function of the observable data for the \textit{population}
-	\begin{itemize}
-		\item Difference in earnings between all Brown and URI students 
-	\end{itemize}
-
-\pause 
-\item \textbf{Target (aka structural) parameter:} what we actually care about
-	\begin{itemize}
-		\item Causal effect on earnings of going to Brown relative to URI
-	\end{itemize}
-
-\end{wideitemize}	
-
-\medskip
-\pause
-\begin{wideitemize}
-
-\item The process of learning about the \textit{estimand} from the \text{estimator} constructed with your \textit{sample} is called \textbf{statistical estimation/inference}.
-
-\pause 
-\item The process of learning about the \textit{parameter} from the \textit{estimand} is called \textbf{identification}.
-
-\end{wideitemize}
-	
-\end{frame}
-
-
-
-
-
-\begin{frame}
-	\includegraphics[width=1.2\textwidth]{BigPicture}
-\end{frame}
-
-
-\begin{frame}{Let's add some math...}
-\begin{wideitemize}
-	\item Introduce \textbf{potential outcomes} notation
-		\begin{itemize}
-			\item 
-			Super useful framework for thinking about causality! \\
-			See the 2021 Nobel Prize writeup on Canvas!
-		\end{itemize}
-	
-	\pause 
-	\item $D_i$ = indicator if get treatment (1 if Brown, 0 if URI)
-	
-	\pause
-	\item $Y_i(1)$ = outcome under treament = earnings at Brown
-	\item $Y_i(0)$ = outcome under control = earnings at URI
-	
-	\pause 
-	\item Observed outcome $Y_i$ is $Y_i(1)$ if $D_i = 1$ and $Y_i(0)$ if $D_i = 0$. ($Y_i$ is your actual earnings)
-	
-	\pause
-	\item
-	We can write the observed outcome as $Y_i = D_i Y_i(1) + (1-D_i) Y_i(0)$
-\end{wideitemize}
-
-\end{frame}
-
-
-
-\begin{frame}
-\begin{wideitemizeshort}
-	\item
-	Example sample: $(Y_i,D_i)$ for $i=1,...N$. Data with earnings and where you went to school
-	
-	\pause 
-	
-	\item
-	Example estimator: 
-		\begin{itemize}
-			\item
-			Difference in sample mean of earnings for people who went to Brown and people who went to URI: 
-			
-			$$ \underbrace{\frac{1}{N_1} \sum_{i:D_i=1} Y_i}_{\text{Avg earnings at Brown in sample}} - \underbrace{\frac{1}{N_0} \sum_{i:D_i=0} Y_i}_{\text{Avg earnings at URI in sample}}$$		
-		\end{itemize}
-	
-	\pause
-		\item
-		Example estimand: 	
-		
-				\begin{itemize}
-			\item
-			Difference in population mean of earnings for people went to Brown and people who went to URI: 
-			
-			$$\underbrace{ E[ Y_i | D_i = 1] }_{\text{Avg earnings at Brown in population}} - \underbrace{E[Y_i | D_i = 0]}_{\text{Avg earnings at URI in population}}$$
-		 
-		\end{itemize}
-	\pause 
-	
-	\item
-	Example target parameter:
-		\begin{itemize}
-			\item Causal effect of Brown for Brown students:
-			$\underbrace{E[Y_i(1) | D_i =1]}_{\text{Earnings at Brown for Brown students in pop}} - \underbrace{E[Y_i(0) | D_i = 1]}_{\text{Earnings at URI for Brown students in pop}} $.   
-		\end{itemize}
-\end{wideitemizeshort}
-\end{frame}
-
-
-\begin{frame}{Why is causal identification hard?}
-	
-	\begin{wideitemize}
-		
-		\item
-		Thought experiment: suppose we had data on earnings for \textit{every} Brown and URI graduate
-		
-		
-		\item
-		We can learn from the data:
-		$$\color{teal} \underbrace{E[ Y_i(1) | D_i=1  ] }_{\text{Earnings at Brown for Brown Students}} \hspace{0.5cm}  \text{and} \hspace{0.5cm} \underbrace{E[Y_i(0) | D_i = 0]	}_{\text{Earnings at URI for URI students}}$$
-		
-		\pause 
-		\item
-		The causal effect of Brown for Brown students is 
-		$$ \color{teal}{\underbrace{E[ Y_i(1) | D_i=1  ] }_{\text{Earnings at Brown for Brown Students}}} - \color{red}{ \underbrace{E[ Y_i(0) | D_i=1  ] }_{\text{Earnings at URI for Brown Students}}}$$ 
-		
-		\pause 
-		\item
-		The data doesn't tell us $\color{red}{ \underbrace{E[ Y_i(0) | D_i=1 ] }_{\text{Earnings at URI for Brown Students}}}$. Why not? 
-		\pause
-			\begin{itemize}
-				\item 
-				Because we never see Brown students going to URI!
-			\end{itemize} 
-		
-	\end{wideitemize}
-	
-\end{frame}
-
-
-\begin{frame}
-	\begin{wideitemize}
-		\item
-		One idea to solve this problem would be to assume that: 
-		
-		$$ \color{red}{ \underbrace{E[ Y_i(0) | D_i=1  ] }_{\text{Earnings at URI for Brown Students}}} = \color{teal}{ \underbrace{E[ Y_i(0) | D_i=0 ] }_{\text{Earnings at URI for URI Students}}}$$
-		
-		\item
-		Why might this give us the wrong answer? 
+		\item Causal Qs involve both a descriptive component (what are outcomes in reality?) 
+		\pause and a \textit{counterfactual} component (how would things have been under a different treatment?)
 		
 		\pause
-		
-		\item
-		Because Brown students may be different from URI students in other ways that would affect their earnings (regardless of where they went to college)
-		
+		\item e.g: what is the causal effect on your earnings of going to Trinity? 
 			\begin{itemize}
-				\item 
-				Academic ability, family background, career goals, etc.
+				\pause 
+				\item Descriptive Q: how much \textit{do} Trinity students earn after graduation?
+				% include figure showing trinity student earnings here if can 
+				\pause 
+				\item Counterfactual Q: how much \textit{would} Trinity students have earned if they went elsewhere?  
 			\end{itemize}
-		
-		\item
-		These differences are referred to as \textit{omitted variables} or \textit{confounding factors}
-	\end{wideitemize}
+	\end{itemize}	
 \end{frame}
 
-\begin{frame}{What about experiments?}
-\begin{wideitemize}
-\item
-The gold standard for learning about causal effects is a randomized controlled trial (RCT), aka experiment
+\begin{frame}{Answering these types of questions is hard}
+\framesubtitle{Causal questions}
 
-\item
-Suppose that the Brown and URI administration randomized who got into which college (assume these are the only 2 colleges for simplicity)
+	Sometimes we can answer causal questions with experiments
+	\pause 
+	e.g. the causal effect of fertiliser on strawberry yield
+	\pause 
+	\begin{itemize}
+		\item Randomly divide plants into control group where no fertiliser applied and treatment group where fertiliser applied
+		\pause 
+		\item If the randomisation is properly implemented (i.e. the only difference between treatment \& control group is the treatment), then simple group-difference yields estimate of causal effect  	
+	\end{itemize}
+	\pause 
+	\vspace{0.25cm}
 
-\item
-Since college is randomly assigned, the only thing that differs between Brown and URI students is the college they went to
+	In many (most?) contexts, this may not be possible \pause 
+	\begin{itemize}
+		\item e.g. takes too long, costs too much, raises ethical concerns
+	\end{itemize}
+	\vspace{0.25cm}
+	\pause 
 
-\item
-Hence, 
+	Social scientists need other tools to estimate causal effects
 
-		$$ \color{red}{ \underbrace{E[ Y_i(0) | D_i=1  ] }_{\text{Earnings at URI for Brown Students}}} = \color{teal}{ \underbrace{E[ Y_i(0) | D_i=0 ] }_{\text{Earnings at URI for URI Students}}}$$
-		
-		since we've eliminated any confounding factors
-
-
-\end{wideitemize}
 \end{frame}
 
-\begin{frame}{But running experiments is often hard/impossible}
-	\begin{wideitemize}
-	
-	\item
-	Unfortunately, Brown/URI have not let us randomize who gets into which college
+
+\section{Course Roadmap}
+\begin{frame}{Course Roadmap}
+	\subtitle{Where we're going}
+
+	\begin{enumerate}
+		\item Causality, poteniatal outcomes, and experiments (MM ch1)
+		\item Review of statisitcal tools and inference (MM ch1/SW ch2-3)
+		\item Linear regression (SW ch4-5)
+		\item Multiple regression (SW ch6-7)
+		\item Non-linear regression (SW ch8)
+		\item Assessing regression (SW ch8)
+		\item Binary outcomes (SW ch11)
+		\item Panel data (SW ch10)
+	\end{enumerate}
+
+\end{frame}
+
+\section{Data}
+
+\begin{frame}{Data}
+\framesubtitle{A short aside on data}
+	\pause 
+	Econometrics uses data from both experimental \& observational sources \pause 
+	\begin{enumerate}
+		\item Experimental data: from experiments designed to evaluate a treatment or policy or to investigate a causal effect
 		\begin{itemize}
-			\item
-			At least not yet! If you could convince them to do this, it'd make for a cool senior thesis! 
+			\item e.g. Preparing for Life https://www.preparingforlife.ie/ 
 		\end{itemize}
-
-
-	\item
-	Likewise, it is difficult to convince states to randomize their minimum wages, or other policies
-	
-	\item
-	In some cases, randomization is not just difficult but would be immoral 
-	
-		\begin{itemize}
-			\item 
-			``What is the causal effect of spousal death on labor supply?''
-		\end{itemize}	
-	
-	\pause
-	\item
-	In this course, we'll discuss tools economists try to use when running experiments is not possible.
-	\end{wideitemize}
-\end{frame}
-
-\begin{frame}{Course Roadmap -- Where we're going}
-	\begin{wideitemize}
-		\item
-		\textbf{Part I ($\sim$ 7 lectures): Review of probability/statistics}. This will give us a mathematical language to talk about:
-		
-			\begin{enumerate}
-				\item 
-				\textit{Statistical estimation/inference: }how does the sample we observe relate to the population of interest
-				
-				\item
-				\textit{Identification:} how do observable features of the population relate to (causal) parameters we care about
-			\end{enumerate}
 		\pause 
 		
-		\item
-		\textbf{Part II ($\sim$ 9 lectures): Linear regression: } We'll discuss ordinarly least squares (OLS), the workhorse model for estimation in econometrics. When does it work, and when will it fail?
-		
-		\pause
-		\item
-		\textbf{Part III ($\sim$ 7 lectures:) Other ``quasi-experimental'' strategies}: We'll discuss other strategies for ``mimicking'' an experiment when it's not available, including instrumental variables (IV) and regression discontinuity (RD)
-			 
-	\end{wideitemize}
+		\item Observational data: collected in surveys or administrative records
+		\begin{itemize}
+			\item e.g. EU Survey of Income and Living Conditions (EU-SILC)
+			\item e.g. UK HM Revenue and Customs Data Lab 
+		\end{itemize}	
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}{Data}
+\framesubtitle{From either experimental or observational sources, 3 main types of data:}
+	 \pause 
+	\begin{enumerate}
+		\item Cross-sectional: multiple entities observed at a single time period \pause  
+		\item Time series: single entity observed at multiple time points \pause 
+		\item Panel/longitudinal: multiple entities, with each observed at two or more time periods
+	\end{enumerate}
+
+\end{frame}
+
+\begin{frame}{Data}
+\framesubtitle{Cross-sectional data}
+	\begin{figure}
+		\centering
+		\includegraphics[width = 0.9\linewidth]{xsection_data.png}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Data}
+\framesubtitle{Time series data}
+	\begin{figure}
+		\centering
+		\includegraphics[width = 0.9\linewidth]{ts_data.png}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Data}
+	\framesubtitle{Panel/longitudinal data}
+		\begin{figure}
+			\centering
+			\includegraphics[width = 0.9\linewidth]{panel_data.png}
+		\end{figure}
+	\end{frame}
+
+\begin{frame}{And finally: the Student Economic Review}
+
+
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.4\textwidth]{ser_logo.png}
+	\end{figure}
+	\begin{itemize}
+		\item Founded in 1987, the Student Economic Review (SER) is one of the oldest undergraduate journals in the world
+		\item Committee chosen by academic staff from JS economics students
+		\item Email will be going out shortly: think about applying!
+		\item See https://www.tcd.ie/Economics/SER/ 
+	\end{itemize}
+
+
+\end{frame}
+
+\begin{frame}
+	\centering
+	\Huge{See you on Friday (midday in Regents House)}
 \end{frame}
 
 
